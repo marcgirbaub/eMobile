@@ -43,3 +43,11 @@ a,
   text-decoration: none;
   color: inherit;
 }
+
+button {
+  font-family: inherit;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+}
