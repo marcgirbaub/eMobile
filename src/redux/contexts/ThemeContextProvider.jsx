@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ThemeProvider } from "@mui/material";
 import useMaterialTheme from "../../hooks/useMaterialTheme/useMaterialTheme";
 import ThemeContext from "./ThemeContext";
@@ -16,13 +16,13 @@ const ThemeContextProvider = ({ children }) => {
     }
   }, [theme]);
 
+  const store = useMemo(() => ({
+    mode: usedMode,
+    toggleMode: handleToggleMode,
+  }));
+
   return (
-    <ThemeContext.Provider
-      value={{
-        mode: usedMode,
-        toggleMode: handleToggleMode,
-      }}
-    >
+    <ThemeContext.Provider value={store}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );

@@ -11,6 +11,7 @@ const App = () => {
       },
     },
   });
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeContextProvider>

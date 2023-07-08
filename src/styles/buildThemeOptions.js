@@ -1,4 +1,9 @@
-import { backgroundDark, backgroundLight } from "./colors";
+import {
+  backgroundDark,
+  backgroundLight,
+  darkColor,
+  lightColor,
+} from "./colors";
 
 const buildThemeOptions = (mode) => ({
   palette: {
@@ -23,6 +28,26 @@ const buildThemeOptions = (mode) => ({
     h4: {
       fontSize: "1.4rem",
       fontWeight: 500,
+    },
+  },
+  components: {
+    MuiSwitch: {
+      styleOverrides: {
+        switchBase: { color: darkColor },
+        colorPrimary: {
+          "&.Mui-checked": {
+            color: lightColor,
+          },
+        },
+        track: {
+          opacity: 0.4,
+          backgroundColor: darkColor,
+          ".Mui-checked.Mui-checked + &": {
+            opacity: 0.6,
+            backgroundColor: lightColor,
+          },
+        },
+      },
     },
   },
 });
