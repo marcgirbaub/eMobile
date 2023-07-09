@@ -3,14 +3,22 @@ import {
   backgroundLight,
   darkColor,
   lightColor,
+  secondaryTextColorDark,
+  secondaryTextColorLight,
 } from "./colors";
 
 const buildThemeOptions = (mode) => ({
   palette: {
     mode,
     ...(mode === "light"
-      ? { background: { default: backgroundLight } }
-      : { background: { default: backgroundDark } }),
+      ? {
+          background: { default: backgroundLight },
+          secondary: { main: secondaryTextColorLight },
+        }
+      : {
+          background: { default: backgroundDark },
+          secondary: { main: secondaryTextColorDark },
+        }),
   },
   typography: {
     h1: {

@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider as MuiThemeProvider, CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 import useMaterialTheme from "../../hooks/useMaterialTheme/useMaterialTheme";
 import ThemeContext from "./ThemeContext";
 
@@ -23,7 +24,12 @@ const ThemeContextProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={store}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </MuiThemeProvider>
     </ThemeContext.Provider>
   );
 };
