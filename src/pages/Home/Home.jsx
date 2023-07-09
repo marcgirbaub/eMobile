@@ -10,7 +10,7 @@ const Home = () => {
   }
 
   return (
-    <HomeStyled className="container">
+    <HomeStyled>
       <ul className="mobiles">
         {data.map((mobile) => (
           <li key={mobile.id}>

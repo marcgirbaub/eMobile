@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Outlet } from "react-router-dom";
+
 import ThemeContextProvider from "./redux/contexts/ThemeContextProvider";
+import Layout from "./components/Layout/Layout";
 
 const App = () => {
   const queryClient = new QueryClient({
@@ -15,7 +16,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeContextProvider>
-        <Outlet />
+        <Layout />
       </ThemeContextProvider>
     </QueryClientProvider>
   );
