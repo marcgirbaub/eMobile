@@ -7,8 +7,8 @@ const Mobile = ({ mobile }) => (
         className="mobile__image"
         src={mobile.imgUrl}
         alt={`The ${mobile.model} from ${mobile.brand}`}
-        width={200}
-        height={200}
+        width={170}
+        height={220}
       />
     </div>
     <div className="mobile__info">
