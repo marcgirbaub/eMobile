@@ -13,11 +13,11 @@ const buildThemeOptions = (mode) => ({
     ...(mode === "light"
       ? {
           background: { default: backgroundLight },
-          secondary: { main: secondaryTextColorLight },
+          secondary: { main: secondaryTextColorLight, light: "#d9dbdd" },
         }
       : {
           background: { default: backgroundDark },
-          secondary: { main: secondaryTextColorDark },
+          secondary: { main: secondaryTextColorDark, light: "#717171" },
         }),
   },
   typography: {
