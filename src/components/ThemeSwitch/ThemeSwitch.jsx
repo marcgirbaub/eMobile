@@ -1,17 +1,22 @@
 import { Switch } from "@mui/material";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
 import { useContext } from "react";
 import ThemeContext from "../../redux/contexts/ThemeContext";
+import ThemeSwitchStyled from "./ThemeSwitchStyled";
 
 const ThemeSwitch = () => {
   const { mode, toggleMode } = useContext(ThemeContext);
 
   return (
-    <Switch
-      onChange={toggleMode}
-      checked={mode === "dark"}
-      edge="end"
-      data-testid="dark-theme-switch"
-    />
+    <ThemeSwitchStyled>
+      <Brightness4Icon />
+      <Switch
+        onChange={toggleMode}
+        checked={mode === "dark"}
+        edge="end"
+        data-testid="dark-theme-switch"
+      />
+    </ThemeSwitchStyled>
   );
 };
 

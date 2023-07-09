@@ -7,3 +7,11 @@ const routes = [
 ];
 
 export const router = createBrowserRouter(routes);
+
+export const getComponentRouter = (ui) =>
+  createBrowserRouter([
+    {
+      path: "/",
+      element: ui,
+    },
+  ]);
