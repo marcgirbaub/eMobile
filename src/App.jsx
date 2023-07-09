@@ -1,4 +1,3 @@
-import { CssBaseline } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ThemeContextProvider from "./redux/contexts/ThemeContextProvider";
 
@@ -7,7 +6,7 @@ const App = () => {
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
-        staleTime: 24 * 60 * 60 * 1000,
+        staleTime: 60 * 60 * 1000,
       },
     },
   });
@@ -15,7 +14,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeContextProvider>
-        <CssBaseline />
+        <></>
       </ThemeContextProvider>
     </QueryClientProvider>
   );
