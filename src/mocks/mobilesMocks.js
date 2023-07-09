@@ -1,12 +1,14 @@
+export const mockMobile = {
+  id: "ZmGrkLRPXOTpxsU4jjAcv",
+  brand: "Acer",
+  model: "Iconia Talk S",
+  price: "170",
+  imgUrl:
+    "https://itx-frontend-test.onrender.com/images/ZmGrkLRPXOTpxsU4jjAcv.jpg",
+};
+
 export const mobilesResponse = [
-  {
-    id: "ZmGrkLRPXOTpxsU4jjAcv",
-    brand: "Acer",
-    model: "Iconia Talk S",
-    price: "170",
-    imgUrl:
-      "https://itx-frontend-test.onrender.com/images/ZmGrkLRPXOTpxsU4jjAcv.jpg",
-  },
+  mockMobile,
   {
     id: "cGjFJlmqNPIwU59AOcY8H",
     brand: "Acer",
