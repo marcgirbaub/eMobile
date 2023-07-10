@@ -1,9 +1,9 @@
 import FindInPageIcon from "@mui/icons-material/FindInPage";
 import useGetMobiles from "../../hooks/useGetMobiles/useGetMobiles";
-import Mobile from "../../components/Mobile/Mobile";
 import HomeStyled from "./HomeStyled";
 import { useState } from "react";
 import Search from "../../components/Search/Search";
+import MobilesList from "../../components/MobilesList/MobilesList";
 
 const Home = () => {
   const { data, isLoading } = useGetMobiles();
@@ -11,7 +11,7 @@ const Home = () => {
   const [searchValue, setSearchValue] = useState("");
   const [filteredMobiles, setFilteredMobiles] = useState([]);
 
-  const onChangeHandler = ({ target: { value } }) => {
+  const onChangeInputHandler = ({ target: { value } }) => {
     setSearchValue(value);
 
     const filteredMobiles = [];
@@ -39,27 +39,15 @@ const Home = () => {
           Welcome to your one-stop shop for brand new phones!
         </h1>
         <Search
-          onChangeHandler={onChangeHandler}
+          onChangeHandler={onChangeInputHandler}
           searchValue={searchValue}
           className="top__search"
         />
       </div>
       {filteredMobiles.length > 0 || searchValue ? (
-        <ul className="mobiles">
-          {filteredMobiles.map((mobile) => (
-            <li key={mobile.id}>
-              <Mobile mobile={mobile} />
-            </li>
-          ))}
-        </ul>
+        <MobilesList mobiles={filteredMobiles} />
       ) : (
-        <ul className="mobiles">
-          {data.map((mobile) => (
-            <li key={mobile.id}>
-              <Mobile mobile={mobile} />
-            </li>
-          ))}
-        </ul>
+        <MobilesList mobiles={data} />
       )}
       {filteredMobiles.length === 0 && searchValue && (
         <div className="not-found">
