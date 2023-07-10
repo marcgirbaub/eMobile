@@ -39,6 +39,16 @@ const HomeStyled = styled.div`
       width: 100%;
     }
   }
+
+  .not-found {
+    align-self: center;
+    font-style: italic;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 `;
 
 export default HomeStyled;

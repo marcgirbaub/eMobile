@@ -1,3 +1,4 @@
+import FindInPageIcon from "@mui/icons-material/FindInPage";
 import useGetMobiles from "../../hooks/useGetMobiles/useGetMobiles";
 import Mobile from "../../components/Mobile/Mobile";
 import HomeStyled from "./HomeStyled";
@@ -59,6 +60,12 @@ const Home = () => {
             </li>
           ))}
         </ul>
+      )}
+      {filteredMobiles.length === 0 && searchValue && (
+        <div className="not-found">
+          <FindInPageIcon sx={{ fontSize: "100px" }} />
+          <span>No mobiles found with your search criteria</span>
+        </div>
       )}
     </HomeStyled>
   );
