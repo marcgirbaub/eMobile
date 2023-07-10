@@ -62,6 +62,30 @@ const DetailPage = () => {
           ))}
         </ul>
         <div className="horizontal-separator"></div>
+        <div className="info__actions actions">
+          <div className="actions__storage">
+            <h3 className="actions__title">Storage</h3>
+            <div className="actions__buttons-container">
+              {mobile.options.storages.map((storage) => (
+                <button key={storage.name} className="actions__button">
+                  {storage.name}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="actions__colors">
+            <h3 className="actions__title">Colors</h3>
+            <div className="actions__buttons-container">
+              {mobile.options.colors.map((color) => (
+                <button key={color.name} className="actions__button">
+                  {color.name}
+                </button>
+              ))}
+            </div>
+          </div>
+          <button className="actions__add-button">Add to cart</button>
+        </div>
+        <div className="horizontal-separator"></div>
       </div>
     </DetailPageStyled>
   );

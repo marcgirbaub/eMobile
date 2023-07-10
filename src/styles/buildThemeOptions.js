@@ -1,4 +1,6 @@
 import {
+  backgraoundButtonDark,
+  backgroundButtonLight,
   backgroundDark,
   backgroundLight,
   darkColor,
@@ -14,10 +16,14 @@ const buildThemeOptions = (mode) => ({
       ? {
           background: { default: backgroundLight },
           secondary: { main: secondaryTextColorLight, light: "#d9dbdd" },
+          backgroundButton: backgroundButtonLight,
+          contrast: darkColor,
         }
       : {
           background: { default: backgroundDark },
           secondary: { main: secondaryTextColorDark, light: "#717171" },
+          backgroundButton: backgraoundButtonDark,
+          contrast: lightColor,
         }),
   },
   typography: {
