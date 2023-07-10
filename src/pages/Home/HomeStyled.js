@@ -6,15 +6,6 @@ const HomeStyled = styled.div`
   flex-direction: column;
   gap: 40px;
 
-  .mobiles {
-    display: grid;
-    align-items: center;
-    gap: 20px;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-column-gap: 20px;
-  }
-
   .top {
     display: flex;
     justify-content: space-between;
@@ -22,7 +13,7 @@ const HomeStyled = styled.div`
 
     @media (max-width: 1000px) {
       flex-direction: column;
-      gap: 20px;
+      gap: 40px;
       text-align: center;
       line-height: 38px;
     }
@@ -48,6 +39,7 @@ const HomeStyled = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    text-align: center;
   }
 `;
 
