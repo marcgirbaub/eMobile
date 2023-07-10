@@ -17,10 +17,9 @@ const Home = () => {
     const filteredMobiles = [];
 
     data.forEach((mobile) => {
-      if (
-        mobile.brand.toLowerCase().includes(value.toLowerCase()) ||
-        mobile.model.toLowerCase().includes(value.toLowerCase())
-      ) {
+      const mobileModelAndBrand = `${mobile.brand} ${mobile.model}`;
+
+      if (mobileModelAndBrand.toLowerCase().includes(value.toLowerCase())) {
         filteredMobiles.push(mobile);
       }
 
