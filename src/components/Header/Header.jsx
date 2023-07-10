@@ -1,5 +1,4 @@
-import { useParams } from "react-router-dom";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import StayCurrentPortraitIcon from "@mui/icons-material/StayCurrentPortrait";
 import Badge from "@mui/material/Badge";
