@@ -1,25 +1,53 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import StayCurrentPortraitIcon from "@mui/icons-material/StayCurrentPortrait";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 import HeaderStyled from "./HeaderStyled";
+import endpoints from "../../router/endpoints";
 
-const Header = () => (
-  <HeaderStyled className="header">
-    <div className="header__container container">
-      <Link to="" className="header__main-link">
-        <StayCurrentPortraitIcon />
-        <span className="header__title">eMobile</span>
-      </Link>
-      <div className="header__actions">
-        <ThemeSwitch />
-        <Badge color="secondary">
-          <ShoppingCartIcon />
-        </Badge>
+const Header = () => {
+  const location = useLocation();
+  const { id } = useParams();
+
+  const getActiveClass = (path) =>
+    location.pathname === path ? "breadcrumbs__link--active" : "";
+
+  return (
+    <HeaderStyled className="header">
+      <div className="header__container container">
+        <Link to="/" className="header__main-link">
+          <StayCurrentPortraitIcon />
+          <span className="header__title">eMobile</span>
+        </Link>
+        <nav className="header__breadcrumbs breadcrumbs">
+          <Link to="/" className={`breadcrumbs__link ${getActiveClass("/")}`}>
+            Home
+          </Link>
+          {location.pathname.includes("product") && (
+            <>
+              <ArrowForwardIosIcon fontSize="small" sx={{ margin: "0 4px" }} />
+              <Link
+                to={location.pathname}
+                className={`breadcrumbs__link ${getActiveClass(
+                  `/${endpoints.product}${id}`,
+                )}`}
+              >
+                Product
+              </Link>
+            </>
+          )}
+        </nav>
+        <div className="header__actions">
+          <ThemeSwitch />
+          <Badge color="secondary">
+            <ShoppingCartIcon />
+          </Badge>
+        </div>
       </div>
-    </div>
-  </HeaderStyled>
-);
+    </HeaderStyled>
+  );
+};
 
 export default Header;

@@ -54,7 +54,7 @@ describe("Given a Home component", () => {
     });
 
     test("Then it should not show a mobile that does not match the search criteria", () => {
-      const unsearchedMobile = mockListOfMobiles[1];
+      const unsearchedMobile = "Acer Ionia";
 
       const searchInput = screen.getByRole("textbox", { name: "Search" });
 

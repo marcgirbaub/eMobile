@@ -33,6 +33,22 @@ const HeaderStyled = styled.header`
       gap: 20px;
     }
   }
+
+  .breadcrumbs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
+
+    &__link {
+      &--active {
+        font-weight: bold;
+      }
+    }
+  }
 `;
 
 export default HeaderStyled;
