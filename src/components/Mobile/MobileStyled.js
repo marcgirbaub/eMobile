@@ -11,6 +11,8 @@ const MobileStyled = styled.div`
       flex-direction: column;
       gap: 10px;
       padding: 10px;
+      justify-content: center;
+      align-items: center;
     }
 
     &__image {
