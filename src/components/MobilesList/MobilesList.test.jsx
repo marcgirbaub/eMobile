@@ -1,4 +1,4 @@
-import renderWithProviders from "../../utils/renderWithProviders";
+import renderRouterWithProviders from "../../utils/renderRouterWithProviders";
 import { screen } from "@testing-library/react";
 import { getRandomMobileList } from "../../mocks/mobilesFactory";
 import MobilesList from "./MobilesList";
@@ -8,7 +8,7 @@ describe("Given a MobilesList component", () => {
     const mockListOfMobiles = getRandomMobileList(10);
 
     beforeEach(() => {
-      renderWithProviders(<MobilesList mobiles={mockListOfMobiles} />);
+      renderRouterWithProviders(<MobilesList mobiles={mockListOfMobiles} />);
     });
 
     test("Then it should show every mobile brand and model", () => {

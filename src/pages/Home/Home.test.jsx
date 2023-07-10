@@ -1,5 +1,5 @@
 import { screen, fireEvent } from "@testing-library/react";
-import renderWithProviders from "../../utils/renderWithProviders";
+import renderRouterWithProviders from "../../utils/renderRouterWithProviders";
 import Home from "./Home";
 import useGetMobiles from "../../hooks/useGetMobiles/useGetMobiles";
 import { getRandomMobileList } from "../../mocks/mobilesFactory";
@@ -15,7 +15,7 @@ describe("Given a Home component", () => {
       data: mockListOfMobiles,
     });
 
-    renderWithProviders(<Home />);
+    renderRouterWithProviders(<Home />);
   });
 
   describe("When rendered and the fetched data is a list of 10 mobiles", () => {
