@@ -3,15 +3,15 @@ import styled from "@emotion/styled";
 const HeaderStyled = styled.header`
   border: 0 solid ${({ theme }) => theme.palette.secondary.light};
   border-bottom-width: 1px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 
   .header {
     &__container {
       display: flex;
       justify-content: space-between;
-      position: sticky;
-      top: 0;
       background-color: ${({ theme }) => theme.palette.background.default};
-      z-index: 2;
       padding: 12px 20px;
     }
 
