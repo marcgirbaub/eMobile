@@ -42,6 +42,9 @@ const ActionsStyled = styled.div`
       font-size: 0.9rem;
       color: ${({ theme }) => theme.palette.background.default};
       margin-bottom: 6px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
 
       &:disabled {
         opacity: 0.6;
@@ -54,6 +57,17 @@ const ActionsStyled = styled.div`
       &:hover {
         opacity: 0.8;
       }
+    }
+  }
+
+  .snackbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    &__text {
+      font-weight: bold;
     }
   }
 `;

@@ -1,5 +1,9 @@
-import { useState } from "react";
+import Snackbar from "@mui/material/Snackbar";
+import ErrorIcon from "@mui/icons-material/Error";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../store/redux/index";
+import CircularProgress from "@mui/material/CircularProgress";
 import ActionsStyled from "./ActionsStyled";
 import useAddToCart from "../../hooks/useAddToCart/useAddToCart";
 import { addMobileToCartActionCreator } from "../../store/redux/features/mobiles/mobilesSlice";
@@ -14,6 +18,12 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
     colors.length > 1 ? "" : colors[0].code,
   );
 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasOptions, setHasOptions] = useState(
+    colors.length > 1 || storages.length > 1,
+  );
+
   const addToCartQuery = useAddToCart(mobileId, selectedColor, selectedStorage);
 
   const handleStorageSelection = (storage) => {
@@ -25,8 +35,31 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
   };
 
   const handleAddToCart = () => {
-    addToCartQuery.refetch();
-    dispatch(addMobileToCartActionCreator());
+    setIsLoading(true);
+    setHasOptions(true);
+
+    setTimeout(() => {
+      addToCartQuery.refetch();
+
+      setIsLoading(false);
+      setSnackbarOpen(true);
+    }, 1500);
+  };
+
+  useEffect(() => {
+    if (
+      !addToCartQuery.isError &&
+      selectedColor &&
+      selectedStorage &&
+      !isLoading &&
+      hasOptions
+    ) {
+      dispatch(addMobileToCartActionCreator());
+    }
+  }, [addToCartQuery.isError, isLoading]);
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
   };
 
   const getActiveClass = (value) =>
@@ -34,7 +67,7 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
       ? "actions__button--selected"
       : "";
 
-  const isDisabled = !selectedColor || !selectedStorage;
+  const isDisabled = !selectedColor || !selectedStorage || isLoading;
 
   return (
     <ActionsStyled className="actions">
@@ -71,8 +104,33 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
         disabled={isDisabled}
         onClick={handleAddToCart}
       >
+        {isLoading && (
+          <CircularProgress size={16} thickness={8} color="inherit" />
+        )}
         Add to cart
       </button>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={4000}
+        onClose={handleSnackbarClose}
+        message={
+          <div className="snackbar">
+            {addToCartQuery.isError ? (
+              <>
+                <ErrorIcon color="error" />
+                <span className="snackbar__text">
+                  There was an error adding your item
+                </span>
+              </>
+            ) : (
+              <>
+                <CheckCircleIcon color="success" />
+                <span className="snackbar__text">Added to cart</span>
+              </>
+            )}
+          </div>
+        }
+      />
     </ActionsStyled>
   );
 };
