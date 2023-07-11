@@ -1,2 +1,3 @@
-export const getMobilesQuery = "getMobilesQuery";
-export const getMobileQuery = "getMobileQuery";
+export const getMobilesQuery = "getMobilesQueryKey";
+export const getMobileQuery = "getMobileQueryKey";
+export const useAddToCartQuery = "addToCartQueryLey";
