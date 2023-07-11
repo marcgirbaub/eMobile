@@ -1,4 +1,5 @@
 import { Link, useLocation, useParams } from "react-router-dom";
+import { useAppSelector } from "../../store/redux";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import StayCurrentPortraitIcon from "@mui/icons-material/StayCurrentPortrait";
 import Badge from "@mui/material/Badge";
@@ -10,6 +11,8 @@ import endpoints from "../../router/endpoints";
 const Header = () => {
   const location = useLocation();
   const { id } = useParams();
+
+  const cart = useAppSelector((state) => state.mobiles.cart);
 
   const getActiveClass = (path) =>
     location.pathname === path ? "breadcrumbs__link--active" : "";
@@ -41,7 +44,7 @@ const Header = () => {
         </nav>
         <div className="header__actions">
           <ThemeSwitch />
-          <Badge color="secondary">
+          <Badge color="secondary" badgeContent={cart}>
             <ShoppingCartIcon />
           </Badge>
         </div>

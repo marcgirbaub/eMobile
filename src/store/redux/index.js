@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
-import { mobilesReducer } from "./mobilesSlice";
+import { mobilesReducer } from "./features/mobiles/mobilesSlice";
 
 const rootReducer = combineReducers({
   mobiles: mobilesReducer,

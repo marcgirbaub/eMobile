@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../store/redux/index";
 import ActionsStyled from "./ActionsStyled";
 import useAddToCart from "../../hooks/useAddToCart/useAddToCart";
+import { addMobileToCartActionCreator } from "../../store/redux/features/mobiles/mobilesSlice";
 
 const Actions = ({ mobileId, options: { colors, storages } }) => {
+  const dispatch = useAppDispatch();
+
   const [selectedStorage, setSelectedStorage] = useState(
     storages.length > 1 ? "" : storages[0].code,
   );
@@ -18,6 +22,11 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
 
   const handleColorSelection = (color) => {
     setSelectedColor(color);
+  };
+
+  const handleAddToCart = () => {
+    addToCartQuery.refetch();
+    dispatch(addMobileToCartActionCreator());
   };
 
   const getActiveClass = (value) =>
@@ -60,7 +69,7 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
       <button
         className="actions__add-button"
         disabled={isDisabled}
-        onClick={() => addToCartQuery.refetch()}
+        onClick={handleAddToCart}
       >
         Add to cart
       </button>
