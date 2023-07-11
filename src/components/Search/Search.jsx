@@ -8,6 +8,7 @@ const Search = ({ searchValue, onChangeHandler, className }) => (
     value={searchValue}
     onChange={onChangeHandler}
     className={`${className}`}
+    type="text"
   />
 );
 
