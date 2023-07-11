@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialMobilesState = {
-  cart: 0,
+  cart: localStorage.getItem("cart") ? Number(localStorage.getItem("cart")) : 0,
 };
 
 const mobilesSlice = createSlice({

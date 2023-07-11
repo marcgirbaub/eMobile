@@ -2,6 +2,7 @@ import getMobiles from "./getMobiles";
 import { mobilesResponse } from "../../mocks/mobilesMocks";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import { baseUrl, productEndpoint } from "../apiConstants";
 
 describe("Given a getMobiles function", () => {
   describe("When called", () => {
@@ -18,6 +19,8 @@ describe("Given a getMobiles function", () => {
     beforeEach(() => server.resetHandlers(...errorHandlers));
 
     test("Then it should throw an error", async () => {
+      localStorage.removeItem(`${baseUrl}${productEndpoint}`);
+
       await expect(getMobiles()).rejects.toThrow();
     });
   });
