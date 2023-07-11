@@ -40,6 +40,16 @@ const DetailPageStyled = styled.div`
     background-color: ${({ theme }) => theme.palette.secondary.light};
     margin: 0 auto;
   }
+
+  .error-feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 60px;
+    text-align: center;
+    font-style: italic;
+  }
 `;
 
 export default DetailPageStyled;
