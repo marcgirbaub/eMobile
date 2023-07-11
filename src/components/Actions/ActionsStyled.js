@@ -44,11 +44,15 @@ const ActionsStyled = styled.div`
       margin-bottom: 6px;
 
       &:disabled {
-        opacity: 0.7;
+        opacity: 0.6;
+
+        &:hover {
+          opacity: 0.6;
+        }
       }
 
       &:hover {
-        opacity: 0.9;
+        opacity: 0.8;
       }
     }
   }
