@@ -1,15 +1,19 @@
 import React from "react";
-import queryClientFactory from "./queryClientFactory";
+import { Provider } from "react-redux";
 import { QueryClientProvider } from "react-query";
 import { render } from "@testing-library/react";
+import queryClientFactory from "./queryClientFactory";
 import ThemeContextProvider from "../store/contexts/ThemeContextProvider";
+import { store } from "../store/redux";
 
 const renderWithProviders = (ui) => {
   const queryClient = queryClientFactory();
 
   const Wrapper = ({ children }) => (
     <QueryClientProvider client={queryClient}>
-      <ThemeContextProvider>{children}</ThemeContextProvider>
+      <Provider store={store}>
+        <ThemeContextProvider>{children}</ThemeContextProvider>
+      </Provider>
     </QueryClientProvider>
   );
 

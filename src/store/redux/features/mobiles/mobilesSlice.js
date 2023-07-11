@@ -16,5 +16,5 @@ const mobilesSlice = createSlice({
 });
 
 export const mobilesReducer = mobilesSlice.reducer;
-export const { addMobileToCart: AddMobileToCartActionCreator } =
+export const { addMobileToCart: addMobileToCartActionCreator } =
   mobilesSlice.actions;
