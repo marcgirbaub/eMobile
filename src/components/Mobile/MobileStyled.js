@@ -16,8 +16,9 @@ const MobileStyled = styled.div`
     }
 
     &__image {
-      object-fit: contain;
+      object-fit: cover;
       margin: 10px 0;
+      height: 100%;
 
       &-container {
         background-color: #fff;
