@@ -1,83 +1,37 @@
 import styled from "@emotion/styled";
 
 const DetailPageStyled = styled.div`
-  padding: 40px 20px;
+  padding: 20px 20px 40px;
   display: flex;
-  justify-content: center;
-  gap: 80px;
+  flex-direction: column;
+  gap: 20px;
+
+  .main-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+
+    @media (max-width: 864px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+  }
 
   .detail {
     &__image {
       border-radius: 4px;
     }
-  }
 
-  @media (max-width: 864px) {
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    &__list {
+    &__info {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-    }
-
-    &__price {
-      font-weight: bold;
-      font-size: 1.6rem;
-    }
-
-    &__title {
-      font-weight: bold;
-    }
-
-    &__value {
-      font-weight: normal;
-    }
-
-    &__actions {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      gap: 12px;
     }
   }
 
-  .actions {
-    &__button {
-      background-color: ${({ theme }) => theme.palette.backgroundButton};
-      border: 1px solid ${({ theme }) => theme.palette.secondary.light};
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-    }
-
-    &__buttons-container {
-      display: flex;
-      gap: 14px;
-    }
-
-    &__title {
-      margin-bottom: 10px;
-    }
-
-    &__add-button {
-      background-color: ${({ theme }) => theme.palette.contrast};
-      border: 1px solid ${({ theme }) => theme.palette.secondary.light};
-      font-weight: bold;
-      padding: 10px 12px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      color: ${({ theme }) => theme.palette.background.default};
-      margin-bottom: 6px;
-    }
+  .back-button {
+    width: fit-content;
   }
 
   .horizontal-separator {
