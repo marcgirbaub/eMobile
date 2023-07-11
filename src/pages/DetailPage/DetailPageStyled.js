@@ -21,6 +21,8 @@ const DetailPageStyled = styled.div`
   .detail {
     &__image {
       border-radius: 4px;
+      object-fit: cover;
+      height: 100%;
     }
 
     &__info {
