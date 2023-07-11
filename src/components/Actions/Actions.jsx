@@ -2,7 +2,7 @@ import Snackbar from "@mui/material/Snackbar";
 import ErrorIcon from "@mui/icons-material/Error";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useEffect, useState } from "react";
-import { useAppDispatch } from "../../store/redux/index";
+import { useAppDispatch, useAppSelector } from "../../store/redux/index";
 import CircularProgress from "@mui/material/CircularProgress";
 import ActionsStyled from "./ActionsStyled";
 import useAddToCart from "../../hooks/useAddToCart/useAddToCart";
@@ -10,6 +10,7 @@ import { addMobileToCartActionCreator } from "../../store/redux/features/mobiles
 
 const Actions = ({ mobileId, options: { colors, storages } }) => {
   const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.mobiles.cart);
 
   const [selectedStorage, setSelectedStorage] = useState(
     storages.length > 1 ? "" : storages[0].code,
@@ -55,6 +56,7 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
       hasOptions
     ) {
       dispatch(addMobileToCartActionCreator());
+      localStorage.setItem("cart", Number(cart) + 1);
     }
   }, [addToCartQuery.isError, isLoading]);
 
