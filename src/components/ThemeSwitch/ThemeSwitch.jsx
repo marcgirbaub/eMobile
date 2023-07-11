@@ -1,7 +1,7 @@
 import { Switch } from "@mui/material";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import { useContext } from "react";
-import ThemeContext from "../../redux/contexts/ThemeContext";
+import ThemeContext from "../../store/contexts/ThemeContext";
 import ThemeSwitchStyled from "./ThemeSwitchStyled";
 
 const ThemeSwitch = () => {

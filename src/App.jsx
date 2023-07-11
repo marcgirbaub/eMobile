@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-
-import ThemeContextProvider from "./redux/contexts/ThemeContextProvider";
+import ThemeContextProvider from "./store/contexts/ThemeContextProvider";
 import Layout from "./components/Layout/Layout";
 
 const App = () => {
