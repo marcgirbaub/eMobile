@@ -2,7 +2,7 @@ import React from "react";
 import queryClientFactory from "./queryClientFactory";
 import { QueryClientProvider } from "react-query";
 import { render } from "@testing-library/react";
-import ThemeContextProvider from "../redux/contexts/ThemeContextProvider";
+import ThemeContextProvider from "../store/contexts/ThemeContextProvider";
 
 const renderWithProviders = (ui) => {
   const queryClient = queryClientFactory();
