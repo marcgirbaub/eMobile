@@ -77,3 +77,5 @@ export const mobileResponse = {
     ],
   },
 };
+
+export const addToCartResponse = { count: 1 };
