@@ -29,7 +29,7 @@ const DetailPage = () => {
         <div className="detail__info">
           <Description mobile={mobile} />
           <div className="horizontal-separator"></div>
-          <Actions options={mobile.options} />
+          <Actions options={mobile.options} mobileId={id} />
           <div className="horizontal-separator"></div>
         </div>
       </div>

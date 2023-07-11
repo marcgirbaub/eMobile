@@ -1,14 +1,16 @@
 import { useState } from "react";
 import ActionsStyled from "./ActionsStyled";
+import useAddToCart from "../../hooks/useAddToCart/useAddToCart";
 
-const Actions = ({ options: { colors, storages } }) => {
+const Actions = ({ mobileId, options: { colors, storages } }) => {
   const [selectedStorage, setSelectedStorage] = useState(
-    storages.length > 1 ? "" : storages[0].name,
+    storages.length > 1 ? "" : storages[0].code,
+  );
+  const [selectedColor, setSelectedColor] = useState(
+    colors.length > 1 ? "" : colors[0].code,
   );
 
-  const [selectedColor, setSelectedColor] = useState(
-    colors.length > 1 ? "" : colors[0].name,
-  );
+  const addToCartQuery = useAddToCart(mobileId, selectedColor, selectedStorage);
 
   const handleStorageSelection = (storage) => {
     setSelectedStorage(storage);
@@ -33,8 +35,8 @@ const Actions = ({ options: { colors, storages } }) => {
           {storages.map((storage) => (
             <button
               key={storage.name}
-              className={`actions__button ${getActiveClass(storage.name)}`}
-              onClick={() => handleStorageSelection(storage.name)}
+              className={`actions__button ${getActiveClass(storage.code)}`}
+              onClick={() => handleStorageSelection(storage.code)}
             >
               {storage.name}
             </button>
@@ -47,15 +49,19 @@ const Actions = ({ options: { colors, storages } }) => {
           {colors.map((color) => (
             <button
               key={color.name}
-              className={`actions__button ${getActiveClass(color.name)}`}
-              onClick={() => handleColorSelection(color.name)}
+              className={`actions__button ${getActiveClass(color.code)}`}
+              onClick={() => handleColorSelection(color.code)}
             >
               {color.name}
             </button>
           ))}
         </div>
       </div>
-      <button className="actions__add-button" disabled={isDisabled}>
+      <button
+        className="actions__add-button"
+        disabled={isDisabled}
+        onClick={() => addToCartQuery.refetch()}
+      >
         Add to cart
       </button>
     </ActionsStyled>
