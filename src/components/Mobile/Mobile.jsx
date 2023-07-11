@@ -13,7 +13,11 @@ const Mobile = ({ mobile }) => (
     </div>
     <div className="mobile__info">
       <h3 className="mobile__model">{`${mobile.brand} - ${mobile.model}`}</h3>
-      <span className="mobile__price">{`${mobile.price}€`}</span>
+      {mobile.price === "" ? (
+        <span className="mobile__price">{"Not in stock"}</span>
+      ) : (
+        <span className="mobile__price">{`${mobile.price}€`}</span>
+      )}
     </div>
   </MobileStyled>
 );

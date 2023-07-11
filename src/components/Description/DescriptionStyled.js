@@ -15,6 +15,10 @@ const DescriptionStyled = styled.div`
     &__price {
       font-weight: bold;
       font-size: 1.6rem;
+
+      &--no-stock {
+        color: ${({ theme }) => theme.palette.secondary.main};
+      }
     }
 
     &__title {

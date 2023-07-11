@@ -28,7 +28,21 @@ const Home = () => {
   };
 
   if (isLoading) {
-    return <></>;
+    return (
+      <HomeStyled>
+        <div className="top">
+          <h1 className="top__slogan">
+            Welcome to your one-stop shop for brand new phones!
+          </h1>
+          <Search
+            onChangeHandler={onChangeInputHandler}
+            searchValue={searchValue}
+            className="top__search"
+            disabled={isLoading}
+          />
+        </div>
+      </HomeStyled>
+    );
   }
 
   return (
@@ -41,6 +55,7 @@ const Home = () => {
           onChangeHandler={onChangeInputHandler}
           searchValue={searchValue}
           className="top__search"
+          disabled={isLoading}
         />
       </div>
       {filteredMobiles.length > 0 || searchValue ? (

@@ -28,7 +28,13 @@ const Description = ({ mobile }) => {
       <h1>
         {mobile.brand} {mobile.model}
       </h1>
-      <span className="description__price">{mobile.price} €</span>
+      {mobile.price === "" ? (
+        <span className="description__price description__price--no-stock">
+          Not in stock
+        </span>
+      ) : (
+        <span className="description__price">{mobile.price} €</span>
+      )}
       <div className="horizontal-separator"></div>
       <ul className="description__list">
         {mobileCharacteristics.map((characteristics) => (
