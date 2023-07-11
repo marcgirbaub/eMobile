@@ -2,6 +2,7 @@ import getMobile from "./getMobile";
 import { mobileResponse } from "../../mocks/mobilesMocks";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import { baseUrl, productEndpoint } from "../apiConstants";
 
 describe("Given a getMobile function", () => {
   const mobileId = "ZmGrkLRPXOTpxsU4jjAcv";
@@ -20,6 +21,8 @@ describe("Given a getMobile function", () => {
     beforeEach(() => server.resetHandlers(...errorHandlers));
 
     test("Then it should throw an error", async () => {
+      localStorage.removeItem(`${baseUrl}${productEndpoint}/${mobileId}`);
+
       await expect(getMobile(mobileId)).rejects.toThrow();
     });
   });
