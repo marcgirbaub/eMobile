@@ -46,6 +46,12 @@ To run the **test** suite, use the following command:
 npm test // npm run test:coverage
 ```
 
+To run e2e tests, run the following command and run all specs on cypress:
+
+```
+npm run cypress
+```
+
 ## **Additional information and comments**
 
 - Developed following **SOLID** and **Clean Code** principles.
