@@ -5,15 +5,19 @@ import useMaterialTheme from "../../hooks/useMaterialTheme/useMaterialTheme";
 import ThemeContext from "./ThemeContext";
 
 const ThemeContextProvider = ({ children }) => {
-  const [usedMode, setUsedMode] = useState("light");
+  const [usedMode, setUsedMode] = useState(
+    localStorage.getItem("mode") ?? "light",
+  );
 
   const theme = useMaterialTheme(usedMode);
 
   const handleToggleMode = useCallback(() => {
     if (usedMode === "light") {
       setUsedMode("dark");
+      localStorage.setItem("mode", "dark");
     } else {
       setUsedMode("light");
+      localStorage.setItem("mode", "light");
     }
   }, [theme]);
 
