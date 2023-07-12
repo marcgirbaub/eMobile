@@ -5,6 +5,7 @@ import HomeStyled from "./HomeStyled";
 import { useState } from "react";
 import Search from "../../components/Search/Search";
 import MobilesList from "../../components/MobilesList/MobilesList";
+import SkeletonList from "../../components/SkeletonList/SkeletonList";
 
 const Home = () => {
   const { data, isLoading, isError } = useGetMobiles();
@@ -64,6 +65,7 @@ const Home = () => {
             disabled={isLoading}
           />
         </div>
+        <SkeletonList />
       </HomeStyled>
     );
   }
