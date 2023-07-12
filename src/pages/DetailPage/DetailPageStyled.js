@@ -18,6 +18,14 @@ const DetailPageStyled = styled.div`
     }
   }
 
+  .loader {
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .detail {
     &__image {
       border-radius: 4px;

@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
 import ErrorIcon from "@mui/icons-material/Error";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useGetMobile from "../../hooks/useGetMobile/useGetMobile";
@@ -25,7 +26,13 @@ const DetailPage = () => {
   }
 
   if (isLoading) {
-    return <></>;
+    return (
+      <DetailPageStyled>
+        <div className="loader">
+          <CircularProgress size={60} thickness={4} />
+        </div>
+      </DetailPageStyled>
+    );
   }
 
   return (
