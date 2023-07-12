@@ -30,7 +30,7 @@ const Description = ({ mobile }) => {
       </h1>
       {mobile.price === "" ? (
         <span className="description__price description__price--no-stock">
-          Not in stock
+          140 €
         </span>
       ) : (
         <span className="description__price">{mobile.price} €</span>
