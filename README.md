@@ -55,3 +55,11 @@ npm test // npm run test:coverage
 - API requests are **cached** for 1 hour so that a new request to an already requested url is only done when the initial request was more than an hour ago.
 - The app is a **Single Page Application** so that it dynamically rewrites a current page with new data instead of loading the enitre page.
 - The app has been developed using the **adapter pattern**. The components are designed to **contain minimal logic** and **receive data via props or hooks** that **encapsulate the logic**. This approach makes the components **easier to test** since the received props can be easily mocked, and function spies or specific states can be used to test the component behavior. **Refactors** are also easier to perform, as the **components** themselves **do not need to be changed**. Instead, you only need to modify the hook where the logic is encapsulated, giving you **greater confidence** in the **reliability of your tests**.
+
+## **Running linters**
+
+To run ESLint, please run the following command:
+
+```
+npm run lint
+```
