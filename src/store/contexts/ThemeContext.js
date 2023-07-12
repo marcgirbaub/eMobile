@@ -2,7 +2,7 @@
 import { createContext } from "react";
 
 const ThemeContext = createContext({
-  mode: "light",
+  mode: localStorage.getItem("mode") ?? "light",
   toggleMode: () => {},
 });
 
