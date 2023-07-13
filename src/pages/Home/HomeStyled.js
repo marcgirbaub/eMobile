@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { Box } from "@mui/material";
 
-const HomeStyled = styled.div`
+const HomeStyled = styled(Box)`
   padding: 40px 20px;
   display: flex;
   flex-direction: column;

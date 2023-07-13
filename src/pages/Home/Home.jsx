@@ -1,4 +1,5 @@
 import FindInPageIcon from "@mui/icons-material/FindInPage";
+import { motion } from "framer-motion";
 import ErrorIcon from "@mui/icons-material/Error";
 import useGetMobiles from "../../hooks/useGetMobiles/useGetMobiles";
 import HomeStyled from "./HomeStyled";
@@ -6,6 +7,7 @@ import { useState } from "react";
 import Search from "../../components/Search/Search";
 import MobilesList from "../../components/MobilesList/MobilesList";
 import SkeletonList from "../../components/SkeletonList/SkeletonList";
+import { downVariants } from "../../styles/framerMotionVariants";
 
 const Home = () => {
   const { data, isLoading, isError } = useGetMobiles();
@@ -31,7 +33,12 @@ const Home = () => {
 
   if (isError) {
     return (
-      <HomeStyled>
+      <HomeStyled
+        component={motion.div}
+        initial="initial"
+        animate="animate"
+        variants={downVariants}
+      >
         <div className="top">
           <h1 className="top__slogan">
             Welcome to your one-stop shop for brand new phones!
@@ -53,7 +60,12 @@ const Home = () => {
 
   if (isLoading) {
     return (
-      <HomeStyled>
+      <HomeStyled
+        component={motion.div}
+        initial="initial"
+        animate="animate"
+        variants={downVariants}
+      >
         <div className="top">
           <h1 className="top__slogan">
             Welcome to your one-stop shop for brand new phones!
@@ -71,7 +83,12 @@ const Home = () => {
   }
 
   return (
-    <HomeStyled>
+    <HomeStyled
+      component={motion.div}
+      initial="initial"
+      animate="animate"
+      variants={downVariants}
+    >
       <div className="top">
         <h1 className="top__slogan">
           Welcome to your one-stop shop for brand new phones!
