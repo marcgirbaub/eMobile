@@ -29,9 +29,7 @@ const Description = ({ mobile }) => {
         {mobile.brand} {mobile.model}
       </h1>
       {mobile.price === "" ? (
-        <span className="description__price description__price--no-stock">
-          140 €
-        </span>
+        <span className="description__price">140 €</span>
       ) : (
         <span className="description__price">{mobile.price} €</span>
       )}

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { Box } from "@mui/material";
 
-const DetailPageStyled = styled.div`
+const DetailPageStyled = styled(Box)`
   padding: 20px 20px 40px;
   display: flex;
   flex-direction: column;
@@ -19,7 +20,7 @@ const DetailPageStyled = styled.div`
   }
 
   .loader {
-    width: 100vw;
+    width: 100%;
     height: 60vh;
     display: flex;
     justify-content: center;

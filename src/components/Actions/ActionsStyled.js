@@ -44,6 +44,7 @@ const ActionsStyled = styled.div`
       margin-bottom: 6px;
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 14px;
 
       &:disabled {
