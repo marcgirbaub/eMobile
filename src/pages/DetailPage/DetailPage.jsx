@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import CircularProgress from "@mui/material/CircularProgress";
 import ErrorIcon from "@mui/icons-material/Error";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -6,6 +7,7 @@ import useGetMobile from "../../hooks/useGetMobile/useGetMobile";
 import DetailPageStyled from "./DetailPageStyled";
 import Actions from "../../components/Actions/Actions";
 import Description from "../../components/Description/Description";
+import { leftVariants } from "../../styles/framerMotionVariants";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -36,7 +38,13 @@ const DetailPage = () => {
   }
 
   return (
-    <DetailPageStyled className="detail">
+    <DetailPageStyled
+      className="detail"
+      component={motion.div}
+      initial="initial"
+      animate="animate"
+      variants={leftVariants}
+    >
       <Link to={".."} className="back-button">
         <ArrowBackIcon />
       </Link>
