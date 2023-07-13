@@ -4,6 +4,7 @@ const MobileStyled = styled.div`
   border-radius: 6px;
   border: 1px solid ${({ theme }) => theme.palette.secondary.light};
   min-width: 300px;
+  min-height: 350px;
 
   .mobile {
     &__info {
@@ -28,6 +29,7 @@ const MobileStyled = styled.div`
         padding: 10px;
         border-top-right-radius: 6px;
         border-top-left-radius: 6px;
+        min-height: 266px;
       }
     }
 

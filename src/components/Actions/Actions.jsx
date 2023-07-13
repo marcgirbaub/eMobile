@@ -1,16 +1,13 @@
 import Snackbar from "@mui/material/Snackbar";
 import ErrorIcon from "@mui/icons-material/Error";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/redux/index";
+import { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import ActionsStyled from "./ActionsStyled";
 import useAddToCart from "../../hooks/useAddToCart/useAddToCart";
-import { addMobileToCartActionCreator } from "../../store/redux/features/mobiles/mobilesSlice";
 
 const Actions = ({ mobileId, options: { colors, storages } }) => {
-  const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.mobiles.cart);
+  const { addToCart, isError } = useAddToCart();
 
   const [selectedStorage, setSelectedStorage] = useState(
     storages.length > 1 ? "" : storages[0].code,
@@ -21,11 +18,6 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasOptions, setHasOptions] = useState(
-    colors.length > 1 || storages.length > 1,
-  );
-
-  const addToCartQuery = useAddToCart(mobileId, selectedColor, selectedStorage);
 
   const handleStorageSelection = (storage) => {
     setSelectedStorage(storage);
@@ -37,28 +29,14 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
 
   const handleAddToCart = () => {
     setIsLoading(true);
-    setHasOptions(true);
 
     setTimeout(() => {
-      addToCartQuery.refetch();
+      addToCart(mobileId, selectedColor, selectedStorage);
 
       setIsLoading(false);
       setSnackbarOpen(true);
-    }, 1500);
+    }, 1000);
   };
-
-  useEffect(() => {
-    if (
-      !addToCartQuery.isError &&
-      selectedColor &&
-      selectedStorage &&
-      !isLoading &&
-      hasOptions
-    ) {
-      dispatch(addMobileToCartActionCreator());
-      localStorage.setItem("cart", Number(cart) + 1);
-    }
-  }, [addToCartQuery.isError, isLoading]);
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
@@ -117,7 +95,7 @@ const Actions = ({ mobileId, options: { colors, storages } }) => {
         onClose={handleSnackbarClose}
         message={
           <div className="snackbar">
-            {addToCartQuery.isError ? (
+            {isError ? (
               <>
                 <ErrorIcon color="error" />
                 <span className="snackbar__text">

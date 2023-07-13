@@ -1,16 +1,33 @@
-import { useQuery } from "react-query";
-import { addToCartQuery } from "../../utils/queryKeys";
-import addMobileToCart from "../../api/addMobileToCart/addMobileToCart";
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/redux";
+import { addMobileToCartActionCreator } from "../../store/redux/features/mobiles/mobilesSlice";
+import { cartEndpoint } from "../../api/apiConstants";
+import apiClient from "../../api/apiClient";
 
-const useAddToCart = (id, colorCode, storageCode) =>
-  useQuery(
-    [addToCartQuery, id, colorCode, storageCode],
-    () => {
-      const response = addMobileToCart(id, colorCode, storageCode);
+const useAddToCart = () => {
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.mobiles.cart);
 
-      return response;
-    },
-    { enabled: false },
-  );
+  const [isError, setIsError] = useState(false);
+
+  const addToCart = async (id, colorCode, storageCode) => {
+    try {
+      await apiClient.post(cartEndpoint, {
+        id,
+        colorCode,
+        storageCode,
+      });
+
+      dispatch(addMobileToCartActionCreator());
+      localStorage.setItem("cart", Number(cart) + 1);
+
+      setIsError(false);
+    } catch {
+      setIsError(true);
+    }
+  };
+
+  return { addToCart, isError };
+};
 
 export default useAddToCart;
