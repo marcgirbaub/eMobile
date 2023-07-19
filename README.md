@@ -1,6 +1,6 @@
 # **eMobile**
 
-**eMobile** is your trusted one-stop shop for brand new phones. It is built with **React** and **Javascript**.
+**eMobile** is your trusted one-stop shop for brand new phones. Find the mobile phone you are looking for among a wide variety, from the latest models to the more affordable ones. It is built with **React** and **Javascript**. Check us out on **https://emobile.vercel.app/**.
 
 ## **Tech Stack**
 
@@ -11,10 +11,12 @@
 - **React Query**
 - **Axios**
 - **React Router**
+- **Material UI**
 - **Jest & React Testing Library**
 - **Cypress**
 - **ESLint & Prettier**
 - **Github Actions**
+- **SonarCloud**
 
 ## **Getting started**
 
